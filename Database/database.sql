@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2023 at 02:42 PM
+-- Generation Time: Aug 20, 2023 at 04:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -81,7 +81,7 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `firstname`, `lastname`, `gender`, `contact`, `email`, `password`, `default_delivery_address`, `date_created`) VALUES
-(1, 'John', 'Smith', 'Male', '091023456789', 'jsmith@sample.com', '1254737c076cf867dc53d60a0364f38e', 'Sample Address', '2023-07-31 10:34:48');
+(2, 'Aakash', 'Lobo', 'Male', '9837287382', 'aakash@gmail.com', 'a870c4012ce2eaa3b60a4c59cb786f76', '901/A, Dreams, Tulip Park, Mumbai', '2023-08-11 18:42:56');
 
 -- --------------------------------------------------------
 
@@ -184,18 +184,42 @@ CREATE TABLE `orders` (
   `status` tinyint(2) NOT NULL DEFAULT 0,
   `paid` tinyint(1) NOT NULL DEFAULT 0,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
-  `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
+  `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `client_name` varchar(40) NOT NULL,
+  `mobile_no` int(10) NOT NULL,
+  `card_number` int(12) NOT NULL,
+  `card_name` varchar(40) NOT NULL,
+  `card_expiry` varchar(11) DEFAULT NULL,
+  `cvv` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `client_id`, `delivery_address`, `payment_method`, `order_type`, `amount`, `status`, `paid`, `date_created`, `date_updated`) VALUES
-(1, 1, 'Sample Address', 'Online Payment', 2, 8500, 0, 1, '2021-07-16 11:14:58', NULL),
-(4, 1, 'Sample Address', 'Online Payment', 2, 5000, 5, 1, '2021-07-16 13:13:42', '2021-07-16 13:52:56'),
-(5, 1, 'Sample Address', 'cod', 2, 4499.99, 0, 1, '2023-07-21 11:08:03', '2023-07-31 18:54:42'),
-(6, 1, '', 'cod', 2, 675, 0, 0, '2023-08-02 17:58:47', NULL);
+INSERT INTO `orders` (`id`, `client_id`, `delivery_address`, `payment_method`, `order_type`, `amount`, `status`, `paid`, `date_created`, `date_updated`, `client_name`, `mobile_no`, `card_number`, `card_name`, `card_expiry`, `cvv`) VALUES
+(9, 1, 'Sample Address', 'cod', 2, 1484, 2, 0, '2023-08-05 10:01:41', '2023-08-09 18:36:28', '', 0, 0, '', NULL, NULL),
+(10, 1, 'Sample Address', 'cod', 2, 1436, 0, 0, '2023-08-05 10:02:38', NULL, '', 0, 0, '', NULL, NULL),
+(16, 1, 'Sample Addressaaa', 'cod', 2, 567, 0, 0, '2023-08-06 20:10:31', NULL, 'aaa', 0, 0, '', NULL, NULL),
+(17, 1, 'Sample Address111', 'cod', 2, 3214, 0, 0, '2023-08-06 20:13:26', NULL, 'qqq', 111, 111, 'qqq', NULL, NULL),
+(18, 1, 'Sample Addressdff', 'cod', 2, 560, 0, 0, '2023-08-06 22:53:58', NULL, 'aaa', 342342, 32342, 'qqq', NULL, NULL),
+(19, 2, '901/A, Dreams, Tulip Park, Mumbai', 'cod', 2, 549, 0, 0, '2023-08-11 19:21:01', NULL, 'Aakash Lobo', 2147483647, 2147483647, 'Aakash Lobo', '0', 4324),
+(20, 2, '901/A, Dreams, Tulip Park, Mumbai', 'cod', 2, 935, 0, 0, '2023-08-11 19:24:12', NULL, 'Aakash Lobo', 2147483647, 2147483647, 'Aakash Lobo', '9', 777),
+(21, 2, '901/A, Dreams, Tulip Park, Mumbai', 'cod', 2, 1000, 3, 1, '2023-08-11 19:35:17', '2023-08-11 19:39:46', 'Aakash Lobo', 2147483647, 2147483647, 'Aakash Lobo', '05/29', 444),
+(22, 1, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 2, 3286, 0, 0, '2023-08-11 19:47:54', NULL, 'Aakash Lobo', 2147483647, 0, 'Aakash Lobo', '05/28', 666),
+(23, 2, '901/A, Dreams, Tulip Park, Mumbai', 'cod', 2, 1000, 0, 0, '2023-08-20 14:48:29', NULL, '', 0, 0, '', NULL, NULL),
+(24, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 549, 0, 0, '2023-08-20 16:26:05', NULL, '', 0, 0, '', NULL, NULL),
+(25, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 549, 0, 0, '2023-08-20 16:26:10', NULL, '', 0, 0, '', NULL, NULL),
+(33, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 748, 0, 0, '2023-08-20 16:50:56', NULL, '', 0, 0, '', '', 0),
+(34, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 748, 0, 0, '2023-08-20 16:51:00', NULL, '', 0, 0, '', '', 0),
+(35, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 748, 0, 0, '2023-08-20 16:51:59', NULL, 'Aakash Lobo', 2147483647, 0, '', '', 0),
+(36, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 748, 0, 0, '2023-08-20 16:52:24', NULL, 'Aakash Lobo', 2147483647, 0, '', '', 0),
+(43, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 700, 0, 0, '2023-08-20 18:09:53', NULL, 'Aditi', 43444, 0, '', '', 0),
+(44, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 567, 0, 0, '2023-08-20 18:15:11', NULL, 'Aditi', 1111, 0, '', '', 0),
+(47, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 545, 0, 0, '2023-08-20 18:18:12', NULL, '', 0, 0, '', '', 0),
+(48, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 0, 0, 0, '2023-08-20 18:18:25', NULL, '', 0, 0, '', '', 0),
+(49, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 0, 0, 0, '2023-08-20 18:18:33', NULL, 'Aditi', 111, 0, '', '', 0),
+(50, 2, '901/A, Dreams, Tulip Park, Mumbai', 'online payment', 0, 748, 0, 0, '2023-08-20 18:33:21', NULL, '', 0, 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -217,12 +241,34 @@ CREATE TABLE `order_list` (
 --
 
 INSERT INTO `order_list` (`id`, `order_id`, `product_id`, `quantity`, `price`, `total`) VALUES
-(1, 1, 2, 1, 3500, 3500),
-(2, 1, 1, 2, 2500, 5000),
-(3, 4, 3, 2, 2500, 5000),
-(4, 5, 1, 1, 2500, 2500),
-(5, 5, 4, 1, 1999.99, 1999.99),
-(6, 6, 38, 1, 675, 675);
+(6, 6, 38, 1, 675, 675),
+(9, 8, 56, 1, 2156, 2156),
+(10, 9, 65, 2, 742, 1484),
+(11, 10, 42, 1, 1436, 1436),
+(12, 11, 43, 2, 1499, 2998),
+(13, 12, 48, 1, 3721, 3721),
+(14, 13, 46, 1, 1325, 1325),
+(15, 14, 45, 1, 1500, 1500),
+(16, 15, 35, 1, 865, 865),
+(17, 16, 34, 1, 567, 567),
+(18, 17, 49, 1, 3214, 3214),
+(19, 18, 32, 1, 560, 560),
+(20, 19, 13, 1, 549, 549),
+(21, 20, 59, 1, 935, 935),
+(22, 21, 10, 2, 500, 1000),
+(23, 22, 28, 1, 2299, 2299),
+(24, 22, 58, 1, 987, 987),
+(25, 23, 21, 1, 1000, 1000),
+(26, 24, 12, 1, 549, 549),
+(27, 33, 9, 1, 748, 748),
+(28, 40, 15, 1, 600, 600),
+(29, 42, 12, 1, 549, 549),
+(30, 43, 8, 1, 700, 700),
+(31, 44, 34, 1, 567, 567),
+(32, 45, 62, 1, 635, 635),
+(33, 46, 62, 1, 635, 635),
+(34, 47, 63, 1, 545, 545),
+(35, 50, 9, 1, 748, 748);
 
 -- --------------------------------------------------------
 
@@ -326,9 +372,33 @@ CREATE TABLE `sales` (
 
 INSERT INTO `sales` (`id`, `order_id`, `total_amount`, `date_created`) VALUES
 (1, 3, 8500, '2021-07-16 11:18:12'),
-(2, 4, 5000, '2021-07-16 13:13:42'),
-(3, 5, 4499.99, '2023-07-21 11:08:03'),
-(4, 6, 675, '2023-08-02 17:58:47');
+(4, 6, 675, '2023-08-02 17:58:47'),
+(6, 8, 2156, '2023-08-04 00:25:02'),
+(7, 9, 1484, '2023-08-05 10:01:41'),
+(8, 10, 1436, '2023-08-05 10:02:38'),
+(9, 11, 2998, '2023-08-06 19:49:48'),
+(10, 12, 3721, '2023-08-06 19:51:48'),
+(11, 13, 1325, '2023-08-06 19:55:46'),
+(12, 14, 1500, '2023-08-06 19:57:36'),
+(13, 15, 865, '2023-08-06 20:03:31'),
+(14, 16, 567, '2023-08-06 20:10:31'),
+(15, 17, 3214, '2023-08-06 20:13:26'),
+(16, 18, 560, '2023-08-06 22:53:58'),
+(17, 19, 549, '2023-08-11 19:21:01'),
+(18, 20, 935, '2023-08-11 19:24:12'),
+(19, 21, 1000, '2023-08-11 19:35:17'),
+(20, 22, 3286, '2023-08-11 19:47:54'),
+(21, 23, 1000, '2023-08-20 14:48:29'),
+(22, 24, 549, '2023-08-20 16:26:05'),
+(23, 33, 748, '2023-08-20 16:50:56'),
+(24, 40, 600, '2023-08-20 18:02:31'),
+(25, 42, 549, '2023-08-20 18:06:17'),
+(26, 43, 700, '2023-08-20 18:09:53'),
+(27, 44, 567, '2023-08-20 18:15:11'),
+(28, 45, 635, '2023-08-20 18:15:50'),
+(29, 46, 635, '2023-08-20 18:16:03'),
+(30, 47, 545, '2023-08-20 18:18:12'),
+(31, 50, 748, '2023-08-20 18:33:21');
 
 -- --------------------------------------------------------
 
@@ -494,55 +564,55 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `system_info`
